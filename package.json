@@ -2,7 +2,7 @@
   "name": "Simon-Server",
   "version": "0.9.0",
   "description": "Allows controllers to control a listener. Pebble control Mac",
-  "main": "server.js",
+  "main": "./server",
   "dependencies": {
     "express": "4.x",
     "websocket":"x"
