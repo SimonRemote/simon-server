@@ -4,15 +4,14 @@
   "description": "Allows controllers to control a listener. Pebble control Mac",
   "main": "./server",
   "dependencies": {
-    "express": "4.x",
     "websocket":"x"
   },
   "repository": {
     "type": "git",
     "url": "http://github.com/simonremote/simon-server"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Tyler Hoffman",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/tyhoff/pebblemac/issues"
   },
