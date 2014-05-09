@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://getbootstrap.com/examples/grid/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Websocket Test</title>
+
+<!-- Bootstrap core CSS -->
+<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<!-- <link href="http://getbootstrap.com/examples/grid/grid.css" rel="stylesheet"> -->
+
+<!-- Just for debugging purposes. Don't actually copy this line! -->
+<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body style="">
+  <div class="container">
+
+    <div class="container">
+      <div class="page-header">
+        <h1>Mac Websocket Test</h1>
+        <p class="lead">Simulates a Mac to the node.js server.</p>
+      </div>
+      Unique Code: <input type="text" id="channel"><br><br>
+
+
+      <button class="btn btn-primary btn-large" onclick="startProcess()">Wait for messages</button>
+      <h3>Output</h3>
+      
+      <table class="table table-striped">
+        <tbody id="tablebody">
+        </tbody>
+      </table>
+    </div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script language="javascript" type="text/javascript">  
+    var wsUri = "ws://127.0.0.1:8080"; 
+    var output;
+    function init() { 
+      output = document.getElementById("tablebody");
+    }  
+    function testWebSocket() { 
+      websocket = new WebSocket(wsUri);
+      websocket.onopen = function(evt) {
+        onOpen(evt); 
+      };
+      websocket.onclose = function(evt) {
+        onClose(evt); 
+      };
+      websocket.onmessage = function(evt) {
+        onMessage(evt); 
+      };
+      websocket.onerror = function(evt) {
+        onError(evt); 
+      };
+    }
+
+    function onOpen(evt) {
+      writeToScreen("CONNECTED");
+      sendRegistrationMsg(evt);
+    }
+
+    function sendRegistrationMsg(evt) {
+      var channel = document.getElementById('channel').value;
+      var message;
+      message = JSON.stringify({
+        type: "registration",
+        registration: {
+          isListener: true,
+          channel: channel
+        }
+      });
+      doSend(message);
+    }
+
+    function doSend(message) {
+      writeToScreen(new Date() + "  SENT: " + message);  
+      websocket.send(message);
+    }
+
+    function onClose(evt) {
+      writeToScreen("DISCONNECTED");
+    }
+
+    function onMessage(evt) {
+      writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data+'</span>');
+    }
+
+    function onError(evt) {
+      writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+    }
+
+    function writeToScreen(message) {
+      var row = document.createElement("tr");
+      var contents = document.createElement("td");
+      contents.style.wordWrap = "break-word";
+      contents.innerHTML = message;
+      row.appendChild(contents);
+      output.appendChild(row);
+      console.log(output);
+    }
+
+    window.addEventListener("load", init, false);
+
+    function startProcess() { 
+      testWebSocket();
+    }
+  </script>
+</body>
+</html>

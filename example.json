@@ -1,0 +1,84 @@
+// Base Information
+// Listener->Server
+// ID included to respond to a specific client
+{
+    "idTo": 3, //#|0,
+    "type": "message|registration|info",
+    "message|registration|info": {}
+}
+
+
+// Controller->Server
+// ID included to respond to a specific client
+{
+    "idTo": 0,
+    "type": "message|registration",
+    "message|registration": {}
+}
+
+
+// Server -> Pebble
+// channel is included in case requested channel is taken. 
+// in this case, assign a random one and send an informative
+// message to the client.
+{
+    "status": {
+        "connected": true,
+        "channel":"ABCD",
+        "message": null,
+        "connectedTo": []
+    }
+}
+
+// Server -> Mac
+// Channel is included in case requested channel is taken. 
+// In this case, assign a random one and send an informative
+// message to the client.
+{
+    "status": {
+        "connected": true,
+        "channel":"ABCD",
+        "message": null,
+        "connectedTo": ["Pebble 2CB1"]
+    }
+}
+
+
+// Pebble -> Server
+// Channel is included to request a specific channel.
+// If already taken, assign a random channel that isn't
+// taken.
+{
+    "registration": {
+        "isListener": false,
+        "channel": "ABCD"
+    }   
+}
+
+{
+    "message": {
+        "app": "iTunes",
+        "command": "next_track"
+    }
+}
+
+
+
+// Mac -> Server
+
+{
+    "registration": {
+        "isListener": true,
+        "channel": "ABCD",
+    }
+}
+
+{
+    "message" : {
+        "title": "",
+        "subtitle": "",
+        "seek": "",
+        "volume": 0.76,
+        "anything":"else"
+    }
+}

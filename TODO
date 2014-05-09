@@ -1,0 +1,23 @@
+TODO
+
+If multiple Mac connetions of same channel, close the most recent try and send an error json
+- right now, it overwrites the old connection
+
+If the requested channel is taken, assign a new random one that isn't taken.
+
+Send status to each device on channel when a new device connects
+simplify sending of statuses
+
+Maybe adjust seek in applescript for songs that are set to start ealier or finish earlier.
+
+Change itunes control to Back Track from previous track? Depends on speed of network and such
+
+Handle sleep/wake loss/gain of internet on the listener.
+
+When music information is null, actually update the phone with "music not found". Applescript is erroring out and not sending info.
+
+Send an info command when the songs position is greater than the duration give or take 3-5 seconds.
+
+Use delegates to communicate with the views instead of hacking the appdelegate.
+
+Use queue for all messages, including registrations. Maybe set a timeout for the first INFO command. 

@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "0.0.1",
+  "description": "None yet",
+  "main": "server.js",
+  "dependencies": {
+    "express": "4.x",
+    "websocket":"x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/tyhoff/pebblemac"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tyhoff/pebblemac/issues"
+  },
+  "homepage": "https://github.com/tyhoff/pebblemac"
+}
