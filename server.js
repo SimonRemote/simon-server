@@ -9,7 +9,7 @@ var server = http.createServer(function(request, response) {
       response.write("Hello World");
     response.end();
 });
-server.listen(8080, function() {
+server.listen(80, function() {
     console.log((new Date()) + ' Server is listening on port 8080');
 });
 
