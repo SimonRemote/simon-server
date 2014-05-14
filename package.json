@@ -4,7 +4,8 @@
   "description": "Allows controllers to control a listener. Pebble control Mac",
   "main": "./server",
   "dependencies": {
-    "websocket":"x"
+    "websocket":"x",
+    "forever-monitor":"x"
   },
   "repository": {
     "type": "git",
