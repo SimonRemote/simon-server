@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+setTimeout(function(){another.no.exist}, 3000);
+
 var WebSocketServer = require('websocket').server;
 var http = require('http');
 
