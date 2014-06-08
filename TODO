@@ -12,12 +12,19 @@ Maybe adjust seek in applescript for songs that are set to start ealier or finis
 
 Change itunes control to Back Track from previous track? Depends on speed of network and such
 
-Handle sleep/wake loss/gain of internet on the listener.
-
 When music information is null, actually update the phone with "music not found". Applescript is erroring out and not sending info.
-
-Send an info command when the songs position is greater than the duration give or take 3-5 seconds.
 
 Use delegates to communicate with the views instead of hacking the appdelegate.
 
-Use queue for all messages, including registrations. Maybe set a timeout for the first INFO command. 
+Query a website like "simonserverurl.tyhoff.com" which returns JSON containing which server the particular version of the application should connect to. 
+  {
+    "0.9": simon-server.tyhoff.com
+    "1.0": simon-server2.tyhoff.com
+  }
+  - Implement on Mac and Pebble
+
+
+COMPLETED
+- Handle sleep/wake loss/gain of internet on the listener.
+- Send an info command when the songs position is greater than the duration give or take 3-5 seconds.
+- Use queue for all messages, including registrations. Maybe set a timeout for the first INFO command. 
