@@ -10,7 +10,7 @@ var server = http.createServer(function(request, response) {
     response.end();
 });
 server.listen(process.env.PORT, function() {
-    console.log((new Date()) + ' Server is listening on port 80');
+    console.log((new Date()) + ' Server is listening');
 });
 
 wsServer = new WebSocketServer({
@@ -24,7 +24,7 @@ function originIsAllowed(origin) {
 }
 
 
-// sending a message to id=0 will send to all devices of the other type. 
+// sending a message to id=0 will send to all devices of the other type.
 var curr_id = 1;
 var table = {};
 
@@ -62,7 +62,7 @@ function deleteConnection(connection) {
 
     var list = channel[connection.info.listKey];
 
-    if (list.length > 0) {
+    if (isset(list) && list.length > 0) {
         deleteListEntry(list, connection.info.id);
     }
 
@@ -252,7 +252,7 @@ function registerDevice(registration, connection) {
     storeConnection(registration.channel, _listKey, connection);
     alertChannelOfChangedConnection(registration.channel, otherType(_listKey));
     sendStatusToConnection(connection);
-}   
+}
 
 function handleMessage(message, connection, idTo) {
     var channel = connection.info.channelKey;
@@ -270,7 +270,7 @@ function handleMessage(message, connection, idTo) {
     if (idTo === 0) {
         // send to each device of opposite type on same channel
         broadcastMessage(channel, otherType(connection.info.listKey), json);
-    
+
     } else if (idTo > 0) {
         // send to individual connection
         sendMessage(channel, otherType(connection.info.listKey), idTo, json);
