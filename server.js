@@ -330,7 +330,6 @@ wsServer.on('request', function(request) {
                 break;
             case "info":
                 handleInfo(msg, connection, msg.idTo);
-                console.log(msg);
                 break;
             default:
                 console.log("Unknown message type\n----------------");
